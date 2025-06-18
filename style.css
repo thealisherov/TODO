@@ -1,27 +1,216 @@
 body {
-    font-family: sans-serif;
-    background: #f4f4f4;
-    display: flex;
-    justify-content: center;
-    padding: 30px;
-  }
+  background: linear-gradient(135deg, #003366 0%, #005fa3 100%);
+  min-height: 100vh;
+  font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* .container {
+  width: 420px;
+  min-height: 600px;
+  max-height: 800px;
+  height: 100%;
+  margin: 80px auto;
+  background: #fff;
+  border-radius: 18px;
+  padding: 32px 24px 24px 24px;
+  box-shadow: 0 8px 32px rgba(0, 46, 87, 0.25);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+} */
+
+.title {
+  text-align: center;
+  font-family: 'Fira Mono', 'Consolas', monospace;
+  font-size: 2.2rem;
+  color: #003366;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+}
+/* 
+.addedTasks {
+  flex: 1;
+  width: 100%;
+  margin: 0 auto ;
+  border: none;
+  background: #f4f8fb;
+  border-radius: 10px;
+  padding: 18px 12px;
+  box-shadow: 0 2px 8px rgba(0, 46, 87, 0.07);
+  overflow-y: auto;
+  max-height: 500px;
+  height: 300px;
+} */
+
+.container {
+  width: 420px;
+  height: 600px; /* height 100% emas, aniq bo'lishi kerak */
+  margin: 80px auto;
+  background: #fff;
+  border-radius: 18px;
+  padding: 32px 24px 24px 24px;
+  box-shadow: 0 8px 32px rgba(0, 46, 87, 0.25);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.addedTasks {
+  flex: 1;
+  width: 100%;
+  margin: 0 auto;
+  border: none;
+  background: #f4f8fb;
+  border-radius: 10px;
+  padding: 18px 12px;
+  box-shadow: 0 2px 8px rgba(0, 46, 87, 0.07);
+  overflow-y: auto;
+  max-height: 420px; /* bu yerda 70% */
+}
+
+
+.addTask {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin: 0 auto;
+}
+
+#ADD {
+  flex: 1;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1.5px solid #b3c6d9;
+  font-size: 1rem;
+  outline: none;
+  transition: border 0.2s;
+  background: #f9fbfd;
+}
+
+#ADD:focus {
+  border: 1.5px solid #005fa3;
+  background: #fff;
+}
+
+.addBtn {
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(135deg, #005fa3 60%, #00b4d8 100%);
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: box-shadow 0.2s, background 0.2s;
+  box-shadow: 0 2px 8px rgba(0, 95, 163, 0.15);
+}
+
+.addBtn:hover {
+  background: linear-gradient(135deg, #0077b6 60%, #48cae4 100%);
+  box-shadow: 0 4px 16px rgba(0, 95, 163, 0.22);
+}
+
+#addIcon {
+  width: 60%;
+  height: 60%;
+  fill: #fff;
+  transition: fill 0.2s;
+}
+
+.addBtn:hover #addIcon {
+  fill: #f1faee;
+}
+
+.addedTasks .task {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; 
+  gap: 14px;
+  padding: 14px 18px;
+}
+
+#taskTEXT {
+  flex: 1 1 0;
+  min-width: 0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  margin: 0 12px;
+}
+
+#taskTEXT p {
+  margin: 0;
+  font-size: 1.08rem;
+  color: #003366;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.TaskIcons {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0; /* Ikonlar siqilmaydi va har doim o‘ngda turadi */
+}
+
+.task input[type="checkbox"].done {
+  accent-color: #005fa3;
+  width: 22px;
+  height: 22px;
+  margin-right: 14px;
+  cursor: pointer;
+  transition: accent-color 0.2s;
+}
+
+.task .edit, .task .delete {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+  transition: background 0.18s;
+  margin-left: 6px;
+}
+
+.task .edit:hover {
+  background: #e0f2fe;
+}
+
+.task .delete:hover {
+  background: #ffe0e0;
+}
+
+.editIcon, .deleteIcon {
+  width: 20px;
+  height: 20px;
+  display: block;
+}
+
+@media (max-width: 500px) {
   .container {
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    width: 300px;
+    width: 98vw;
+    min-width: unset;
+    padding: 12px 4vw 18px 4vw;
   }
-  input {
-    width: 100%;
-    padding: 8px;
+  .addedTasks .task {
+    padding: 10px 6px;
+    font-size: 1rem;
   }
-  button {
-    margin-top: 10px;
-    width: 100%;
-    padding: 8px;
+  .task .edit, .task .delete {
+    width: 28px;
+    height: 28px;
   }
-  li {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 10px;
+  .editIcon, .deleteIcon {
+    width: 16px;
+    height: 16px;
   }
+}
